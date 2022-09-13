@@ -11,8 +11,8 @@ class HomePageController extends GetxController {
   }
 
   onClickedCalculatorPage(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const CalculatorPage()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => CalculatorPage()));
     update(["toCalculatroPage"]);
   }
 }
