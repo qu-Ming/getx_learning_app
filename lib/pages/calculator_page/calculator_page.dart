@@ -45,7 +45,7 @@ class CalculatorPage extends StatelessWidget {
                         Align(
                           alignment: Alignment.topRight,
                           child: TextComponent(
-                            text: calculatorPageController.number,
+                            text: calculatorPageController.numberQuestion,
                             colorText: AppColors.colorBlack,
                             textSize: AppDimens.text_size_18,
                           ),
@@ -54,7 +54,7 @@ class CalculatorPage extends StatelessWidget {
                           alignment: Alignment.bottomRight,
                           child: TextComponent(
                             fontWeight: FontWeight.bold,
-                            text: answer,
+                            text: calculatorPageController.numberAnswer,
                             colorText: AppColors.colorDarkRed,
                             textSize: AppDimens.icon_size_30,
                           ),
@@ -80,7 +80,10 @@ class CalculatorPage extends StatelessWidget {
                     },
                     buttonText: calculatorPageController.buttons[index],
                     textColor: AppColors.colorWhite,
-                    color: AppColors.colorDarkRed,
+                    color: calculatorPageController.changeColor(
+                            calculatorPageController.buttons[index])
+                        ? AppColors.colorLightRed
+                        : AppColors.appBarColor,
                   );
                 }),
           ),

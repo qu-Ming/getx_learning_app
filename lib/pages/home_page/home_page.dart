@@ -16,11 +16,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.appBarColor,
-        toolbarHeight: 70,
-        leading: const Icon(
-          Icons.sort,
-          size: 30,
-        ),
+        toolbarHeight: 30,
       ),
       body: Column(
         children: [
