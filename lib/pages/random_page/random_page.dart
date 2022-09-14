@@ -12,28 +12,31 @@ class RandomPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RandomPageController nextPageController = Get.put(RandomPageController());
+    RandomPageController randomPageController = Get.put(RandomPageController());
     TextEditingController fNum = TextEditingController();
     TextEditingController lNum = TextEditingController();
 
     String title = '0';
     String title2 = '';
 
+    String fNum1 = 'First number';
+    String lNum1 = 'Last number';
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: GestureDetector(
         onTap: () {
-          RandomPageController().cancelKeyBoard();
+          randomPageController.cancelKeyBoard();
         },
         child: SafeArea(
           child: Scaffold(
-            backgroundColor: AppColors.colorWhite,
+            backgroundColor: AppColors.colorYellow,
             appBar: AppBar(
               backgroundColor: AppColors.colorOrange,
               centerTitle: true,
               leading: GestureDetector(
                 onTap: () {
-                  RandomPageController().onClickIconReturn(context);
+                  randomPageController.onClickIconReturn(context);
                 },
                 child: const Icon(
                   Icons.chevron_left_rounded,
@@ -46,8 +49,11 @@ class RandomPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
+                      padding: const EdgeInsets.only(top: 60, bottom: 60),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
                         color: AppColors.colorWhite,
                       ),
                       child: GetBuilder<RandomPageController>(
@@ -59,17 +65,17 @@ class RandomPage extends StatelessWidget {
                                   text: title2.isEmpty ? title : title2,
                                   colorText: AppColors.colorBlack,
                                   fontWeight: FontWeight.bold,
-                                  textSize: 80.0,
+                                  textSize: 50.0,
                                 ),
                                 const SizedBox(
-                                  height: 30,
+                                  height: 20,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 60.0, vertical: 10.0),
                                   child: TextFieldComponent(
                                     textEditingController: fNum,
-                                    text: 'First number',
+                                    text: fNum1,
                                     textInputType: TextInputType.number,
                                   ),
                                 ),
@@ -78,7 +84,7 @@ class RandomPage extends StatelessWidget {
                                       horizontal: 60.0),
                                   child: TextFieldComponent(
                                     textEditingController: lNum,
-                                    text: 'Last number',
+                                    text: lNum1,
                                     textInputType: TextInputType.number,
                                   ),
                                 ),
@@ -91,7 +97,7 @@ class RandomPage extends StatelessWidget {
                                   child: Center(
                                     child: GestureDetector(
                                       onTap: () {
-                                        nextPageController.randomEnter(
+                                        randomPageController.randomEnter(
                                             int.parse(fNum.text),
                                             int.parse(lNum.text), (result) {
                                           title2 = result.toString();

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_learning_app/components/container_item_component.dart';
-import 'package:getx_learning_app/components/text_component.dart';
 import 'package:getx_learning_app/pages/home_page/home_page_controller.dart';
 import 'package:getx_learning_app/utils/const/app_colors.dart';
 
@@ -15,32 +14,25 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.colorWhite,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: AppColors.appBarColor,
-        toolbarHeight: 70,
-        leading: const Icon(
-          Icons.sort,
-          size: 30,
-        ),
+        toolbarHeight: 30,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: const BoxDecoration(
               color: AppColors.colorWhite,
             ),
-            child: const TextComponent(
-              text: 'TEXT',
-              textSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
           ),
           Expanded(
             flex: 2,
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: AppColors.backGourndColor,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
+                color: AppColors.appBarColor,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
@@ -94,13 +86,23 @@ class HomePage extends StatelessWidget {
                         );
                       },
                     ),
-                    const ContainerItemComponent(
-                      fontSize: 10,
-                      text: 'Date',
-                      iconData: Icons.favorite,
-                      colorIcon: AppColors.colorWhite,
-                      sizeIcon: 30.0,
-                      color: AppColors.colorPink,
+                    GetBuilder<HomePageController>(
+                      id: "toDatePage",
+                      builder: (_) {
+                        return GestureDetector(
+                          onTap: () {
+                            homePageController.onClickedDatePage(context);
+                          },
+                          child: const ContainerItemComponent(
+                            fontSize: 10,
+                            text: 'Date',
+                            iconData: Icons.favorite,
+                            colorIcon: AppColors.colorWhite,
+                            sizeIcon: 30.0,
+                            color: AppColors.colorPink,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
