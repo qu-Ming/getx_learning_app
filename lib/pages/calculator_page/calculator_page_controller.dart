@@ -39,6 +39,7 @@ class CalculatorPageController extends GetxController {
       ContextModel cm = ContextModel();
       double eval = exp.evaluate(EvaluationType.REAL, cm);
       numberAnswer = eval.toString();
+      numberQuestion = numberAnswer;
     } else {
       numberQuestion += buttons[index];
     }

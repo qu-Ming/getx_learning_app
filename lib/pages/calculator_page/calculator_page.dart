@@ -10,8 +10,8 @@ import '../../components/button_number_component.dart';
 class CalculatorPage extends StatelessWidget {
   CalculatorPage({Key? key}) : super(key: key);
 
-  String question = '';
-  String answer = '';
+  final String question = '';
+  final String answer = '';
   CalculatorPageController calculatorPageController =
       Get.put(CalculatorPageController());
   @override

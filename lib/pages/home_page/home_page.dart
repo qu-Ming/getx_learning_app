@@ -86,13 +86,23 @@ class HomePage extends StatelessWidget {
                         );
                       },
                     ),
-                    const ContainerItemComponent(
-                      fontSize: 10,
-                      text: 'Date',
-                      iconData: Icons.favorite,
-                      colorIcon: AppColors.colorWhite,
-                      sizeIcon: 30.0,
-                      color: AppColors.colorPink,
+                    GetBuilder<HomePageController>(
+                      id: "toDatePage",
+                      builder: (_) {
+                        return GestureDetector(
+                          onTap: () {
+                            homePageController.onClickedDatePage(context);
+                          },
+                          child: const ContainerItemComponent(
+                            fontSize: 10,
+                            text: 'Date',
+                            iconData: Icons.favorite,
+                            colorIcon: AppColors.colorWhite,
+                            sizeIcon: 30.0,
+                            color: AppColors.colorPink,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

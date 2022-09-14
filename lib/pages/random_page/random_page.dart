@@ -30,7 +30,7 @@ class RandomPage extends StatelessWidget {
         },
         child: SafeArea(
           child: Scaffold(
-            backgroundColor: AppColors.backGourndColor,
+            backgroundColor: AppColors.colorYellow,
             appBar: AppBar(
               backgroundColor: AppColors.colorOrange,
               centerTitle: true,
@@ -49,10 +49,11 @@ class RandomPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
+                      padding: const EdgeInsets.only(top: 60, bottom: 60),
                       margin: const EdgeInsets.symmetric(horizontal: 20),
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
+                        borderRadius: BorderRadius.circular(20),
                         color: AppColors.colorWhite,
                       ),
                       child: GetBuilder<RandomPageController>(
