@@ -12,18 +12,21 @@ class RandomPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RandomPageController nextPageController = Get.put(RandomPageController());
+    RandomPageController randomPageController = Get.put(RandomPageController());
     TextEditingController fNum = TextEditingController();
     TextEditingController lNum = TextEditingController();
 
     String title = '0';
     String title2 = '';
 
+    String fNum1 = 'First number';
+    String lNum1 = 'Last number';
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: GestureDetector(
         onTap: () {
-          RandomPageController().cancelKeyBoard();
+          randomPageController.cancelKeyBoard();
         },
         child: SafeArea(
           child: Scaffold(
@@ -33,7 +36,7 @@ class RandomPage extends StatelessWidget {
               centerTitle: true,
               leading: GestureDetector(
                 onTap: () {
-                  RandomPageController().onClickIconReturn(context);
+                  randomPageController.onClickIconReturn(context);
                 },
                 child: const Icon(
                   Icons.chevron_left_rounded,
@@ -71,7 +74,7 @@ class RandomPage extends StatelessWidget {
                                       horizontal: 60.0, vertical: 10.0),
                                   child: TextFieldComponent(
                                     textEditingController: fNum,
-                                    text: 'First number',
+                                    text: fNum1,
                                     textInputType: TextInputType.number,
                                   ),
                                 ),
@@ -80,7 +83,7 @@ class RandomPage extends StatelessWidget {
                                       horizontal: 60.0),
                                   child: TextFieldComponent(
                                     textEditingController: lNum,
-                                    text: 'Last number',
+                                    text: lNum1,
                                     textInputType: TextInputType.number,
                                   ),
                                 ),
@@ -93,7 +96,7 @@ class RandomPage extends StatelessWidget {
                                   child: Center(
                                     child: GestureDetector(
                                       onTap: () {
-                                        nextPageController.randomEnter(
+                                        randomPageController.randomEnter(
                                             int.parse(fNum.text),
                                             int.parse(lNum.text), (result) {
                                           title2 = result.toString();
